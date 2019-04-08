@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const config = require('./config');
+const https = require('https');
+const fs = require('fs');
 
 const app = express();
 
@@ -31,5 +33,16 @@ app.get('/movie_search', async (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log('now listening at 3000');
+  console.log('http listening to port : 3000');
 });
+
+https
+  .createServer(
+    {
+      ca: fs.readFileSync('/home/ubuntu/ssl/movie-plugin.p-e.kr/chain.pem'),
+      key: fs.readFileSync('/home/ubuntu/ssl/movie-plugin.p-e.kr/privkey.pem'),
+      cert: fs.readFileSync('/home/ubuntu/ssl/movie-plugin.p-e.kr/cert.pem')
+    },
+    app
+  )
+  .listen(443, () => console.log(`https listening to port : 443`));

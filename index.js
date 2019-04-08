@@ -39,9 +39,9 @@ app.listen(3000, () => {
 https
   .createServer(
     {
-      ca: fs.readFileSync('/home/ubuntu/ssl/chain.pem'),
-      key: fs.readFileSync('/home/ubuntu/ssl/privkey.pem'),
-      cert: fs.readFileSync('/home/ubuntu/ssl/cert.pem')
+      ca: fs.readFileSync('/home/ubuntu/ssl/chain1.pem'),
+      key: fs.readFileSync('/home/ubuntu/ssl/privkey1.pem'),
+      cert: fs.readFileSync('/home/ubuntu/ssl/cert1.pem')
     },
     app
   )

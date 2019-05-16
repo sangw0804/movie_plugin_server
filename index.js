@@ -11,11 +11,11 @@ app.use(cors({ origin: true }));
 
 app.get('/movie_search', async (req, res) => {
   try {
-    const { movie } = req.query;
-    console.log(movie);
+    const { q } = req.query;
+    console.log(q);
     const { data } = await axios(
       `https://openapi.naver.com/v1/search/movie.json?query=${encodeURI(
-        movie
+        q
       )}`,
       {
         headers: {
